@@ -1,7 +1,7 @@
 import { Atividades } from '../models/atividade.models.js';
 import { User } from '../models/user.models.js';
 
-async function carregarAtividade(req, res) {
+export async function carregarAtividade(req, res) {
     try {
         const atividades = await Atividades.findAll({
             include: [{ model: User, attributes: ['id', 'nome', 'email', 'imagem'] }]
@@ -13,4 +13,11 @@ async function carregarAtividade(req, res) {
     }
 }
 
-export default carregarAtividade
+export async function criarAtividade(req, res) {
+
+    try {
+
+    } catch (error) {
+
+    }
+}
