@@ -1,4 +1,3 @@
-
 import express from 'express';
 import sequelize from './src/config/db.js'
 import { corsConfig } from './src/config/cors.js';
