@@ -47,9 +47,10 @@ export async function cadastrarUser(req, res) {
                 criar
             })
 
-    } catch (error) {
+    } catch (erro) {
             return res.status(400).json({
-                mensagem: "Pão de batata deu erro"
+                mensagem: "Pão de batata deu erro",
+                erro
             })
     }
     
