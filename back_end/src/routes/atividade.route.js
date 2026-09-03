@@ -6,6 +6,6 @@ const atividadeRouter = Router();
 
 atividadeRouter.get('/', ControllerAtividade.carregarAtividade);
 
-atividadeRouter.post('/', ControllerAtividade.criarAtividade)
+atividadeRouter.post('/criar', ControllerAtividade.criarAtividade)
 
 export default atividadeRouter;

@@ -15,15 +15,32 @@ export async function carregarAtividade(req, res) {
 
 export async function criarAtividade(req, res) {
     try {
-        const criarAtividade = await Atividades.create({
-            tipo_atividade: req.body.tipo_atividade,
-            distancia_percorrida: req.body.distancia_percorrida,
-            duracao_atividade: req.body.duracao_atividade,
-            quantidade_calorias: req.body.quantidade_calorias
-        })
+        const { tipo_atividade, distancia_percorrida, duracao_atividade, quantidade_calorias } = req.body;
 
-        res.status(201).json(criarAtividade)
+        if (!tipo_atividade || !duracao_atividade) {
+            return res.status(400).json({
+                mensagem: "Tipo de atividade e duração são obrigatórios."
+            });
+        }
+
+        const atividade = await Atividades.create({
+            tipo_atividade,
+            distancia_percorrida,
+            duracao_atividade,
+            quantidade_calorias
+        });
+
+        return res.status(201).json({
+            mensagem: "Atividade criada com sucesso!",
+            atividade
+        });
+
     } catch (error) {
+        console.error("Erro ao criar atividade:", error);
 
+        return res.status(500).json({
+            mensagem: "Erro interno ao criar atividade.",
+            erro: error.message
+        });
     }
 }
