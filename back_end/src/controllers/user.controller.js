@@ -25,7 +25,7 @@ export async function loginUser(req, res) {
 
 export async function cadastrarUser(req, res) {
     try {
-            const { nome, email, nome_usuario, imagem, senha} = req.body
+            const { nome, email, nomeDeUsuario, imagem, senha} = req.body
             
             if(!senha){
                 return res.status(400).json({
@@ -36,7 +36,7 @@ export async function cadastrarUser(req, res) {
             const criar = await User.create({
                 nome,
                 email,
-                nome_usuario,
+                nomeDeUsuario,
                 imagem,
                 senha
             })
